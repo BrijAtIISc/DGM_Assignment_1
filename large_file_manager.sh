@@ -20,10 +20,10 @@ split_files() {
 recombine_files() {
   find "$SCRIPT_DIR" -type f -name "*_chunk_*" | sed 's/_chunk_.*//' | sort -u | while read -r prefix; 
   do
-    echo "Recombining Chunks: $prefix..."
+    echo "Recombining Chunks: $prefix"
     cat "${prefix}_chunk_"* > "$prefix"
     if [ $? -eq 0 ]; then
-      echo "Deleting Chunks: $prefix..."
+      echo "Deleting Chunks: $prefix"
       rm "${prefix}_chunk_"*
     fi
   done
